@@ -35,9 +35,10 @@ def get_birthday():
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
+  wordDay = "今天是2023年3月27日。\n早上好呀宝儿，宝儿么么哒。新的一周开始了呀，对宝儿的爱意随着时间又加深了一分，爱你呀宝儿，亲亲。\n"
   if words.status_code != 200:
-    return get_words()
-  return words.json()['data']['text']
+    return wordDay+get_words()
+  return wordDay+words.json()['data']['text']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
