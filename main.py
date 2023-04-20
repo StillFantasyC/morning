@@ -35,7 +35,7 @@ def get_birthday():
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
-  wordDay = "今天是2023年4月19日，星期三。\n早上好呀宝儿，昨天彩排很辛苦很累，今天要吃好喝好睡好呀，晚上才有力气彩排嘛。爱你么么哒。\n"
+  wordDay = "今天是2023年4月21日，星期五。\n早上好呀宝儿，一看才发现昨天忘记推送了，不好意思呀。今天是周五呀，熬过今天就是周末啦，就可以放松放松了嘛。爱你么么哒。\n"
   if words.status_code != 200:
     return wordDay+get_words()
   return wordDay+words.json()['data']['text']
