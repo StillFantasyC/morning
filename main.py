@@ -18,7 +18,11 @@ user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
 def get_days():
-  words = "2023年5月12日，星期五。"
+  words = "2023年5月13日，星期六。"
+  return words
+
+def get_words():
+  words = "早上好宝儿，今天放假好好休息吧，爱你么么哒。\n"
   return words
 
 def get_weather():
@@ -54,9 +58,6 @@ def get_words_2():
     return get_words_2()  
   return words.json()['data']['text']
  
-def get_words():
-  words = "宝宝不要生我气了好不好？我们和好嘛宝宝。\n"
-  return words
 
 #def get_random_color():
   #return "#%06x" % random.randint(0, 0xFFFFFF)
