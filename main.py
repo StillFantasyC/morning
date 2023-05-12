@@ -35,13 +35,13 @@ def get_birthday():
   next = datetime.strptime("2023-04-26", "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
-  return (next - today).days
+  return (next - today).days + 1
 
 def get_birthday_2():
   next = datetime.strptime("2023-05-14", "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
-  return (next - today).days
+  return (next - today).days + 1
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
@@ -62,6 +62,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"lastMeet_days":{"value":get_count_2()},"birthday_left":{"value":get_birthday()},"birthday_left_2":{"value":get_birthday_2()},"words":{"value":get_words_2()}}
+data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"lastMeet_days":{"value":get_count_2()},"birthday_left":{"value":get_birthday()},"birthday_left_2":{"value":get_words_2()},"words":{"value":get_birthday_2()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
