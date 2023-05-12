@@ -49,11 +49,10 @@ def get_words():
   if words.status_code != 200:
     return wordDay+get_words()  
   return wordDay+words.json()['data']['text']
-  
- def get_words_2():
-  words = requests.get("https://api.shadiao.pro/chp")
-  wordDay = "今天是2023年5月5日，星期五。\n早上好呀宝儿，这两天身体不太舒服，还在忙着开题报告，有点冷落宝儿了，么么么么。爱你么么哒。\n"    
-  return wordDay+words.json()['data']['text']
+ 
+def get_words_2():
+  words = "今天是2023年5月5日，星期五。\n早上好呀宝儿，这两天身体不太舒服，还在忙着开题报告，有点冷落宝儿了，么么么么。爱你么么哒。\n"
+  return words
 
 #def get_random_color():
   #return "#%06x" % random.randint(0, 0xFFFFFF)
