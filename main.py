@@ -17,6 +17,9 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
+def get_days():
+  words = "2023年5月12日，星期五。"
+  return words
 
 def get_weather():
   url = "https://devapi.qweather.com/v7/weather/now?location=101271401&key=02b35e6addfb4ae09f7467644e3bed96"
@@ -47,10 +50,12 @@ def get_words_2():
   words = requests.get("https://api.shadiao.pro/chp")   
   if words.status_code != 200:
     return get_words_2()  
+  if len(words.json()['data']['text']) > 20:
+    return get_words_2()  
   return words.json()['data']['text']
  
 def get_words():
-  words = "今天是2023年5月12日，星期五。早上好呀宝儿，这个推送已经一周没更新了，今天终于修补好了。爱你么么哒。\n"
+  words = "宝宝不要生我气了好不好？我们和好嘛宝宝。\n"
   return words
 
 #def get_random_color():
@@ -61,6 +66,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"lastMeet_days":{"value":get_count_2()},"birthday_left":{"value":get_birthday()},"birthday_left_2":{"value":get_birthday_2()},"words":{"value":get_words()},"words_2":{"value":get_words_2()}}
+data = {"nowDay":{"value":get_days()},"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"lastMeet_days":{"value":get_count_2()},"birthday_left":{"value":get_birthday()},"birthday_left_2":{"value":get_birthday_2()},"words":{"value":get_words()},"words_2":{"value":get_words_2()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
