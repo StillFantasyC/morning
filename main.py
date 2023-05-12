@@ -50,7 +50,7 @@ def get_words_2():
   return words.json()['data']['text']
  
 def get_words():
-  words = "今天是2023年5月12日，星期五。\n早上好呀宝儿，这个推送已经一周没更新了，今天终于修补好了。爱你么么哒。\n"
+  words = "今天是2023年5月12日，星期五。早上好呀宝儿，这个推送已经一周没更新了，今天终于修补好了。爱你么么哒。\n"
   return words
 
 #def get_random_color():
