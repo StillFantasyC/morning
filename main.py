@@ -28,7 +28,13 @@ def get_count():
   return delta.days
 
 def get_birthday():
-  next = datetime.strptime("2023-04-27", "%Y-%m-%d")
+  next = datetime.strptime("2023-04-26", "%Y-%m-%d")
+  if next < datetime.now():
+    next = next.replace(year=next.year + 1)
+  return (next - today).days
+
+def get_birthday_2():
+  next = datetime.strptime("2023-05-14", "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
   return (next - today).days
@@ -41,8 +47,8 @@ def get_words():
   return wordDay+words.json()['data']['text']
   
 
-def get_random_color():
-  return "#%06x" % random.randint(0, 0xFFFFFF)
+#def get_random_color():
+  #return "#%06x" % random.randint(0, 0xFFFFFF)
 
 
 client = WeChatClient(app_id, app_secret)
@@ -50,6 +56,6 @@ client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
 #, "color":get_random_color()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words()}}
+data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"birthday_left_2":{"value":get_birthday_2()},"words":{"value":get_words()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
