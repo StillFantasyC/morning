@@ -18,11 +18,11 @@ user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
 def get_days():
-  words = "2023年5月31日，星期三。"
+  words = "2023年6月1日，星期四。"
   return words
 
 def get_words():
-  words = "5月的最后一天，夏天要到了，爱你么么哒。\n"
+  words = "6月的第一天，要开心要元气满满哦，爱你么么哒。\n"
   return words
 
 def get_weather():
